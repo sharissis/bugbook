@@ -36,37 +36,20 @@
 		<div class="container">
 			
 
+<h1>Bug Book</h1>
 
+<input type="text" id="js-title-input" class="title-input" placeholder="Title">
+<input type="text" id="js-link-input" class="link-input" placeholder="Link">
+<button id="js-submit-bug" class="submit-bug">Add Bug</button>
 
-<div id='messagesDiv'></div>
-
-<input type='text' id='nameInput' placeholder='Name'>
-<input type='text' id='messageInput' placeholder='Message'>
-
-<script>
-	var myDataRef = new Firebase('https://pvzp1paydyr.firebaseio-demo.com/');
-	$('#messageInput').keypress(function (e) {
-		if (e.keyCode == 13) {
-			var name = $('#nameInput').val();
-			var text = $('#messageInput').val();
-			myDataRef.push({name: name, text: text});
-			$('#messageInput').val('');
-		}
-	});
-	myDataRef.on('child_added', function(snapshot) {
-		console.log(snapshot);
-		var message = snapshot.val();
-		displayChatMessage(message.name, message.text);
-	});
-	function displayChatMessage(name, text) {
-		$('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
-		$('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-	};
-</script>
+<div id='js-bugs'>
+	<ul></ul>
+</div>
 		</div>
 
 		<!-- build:js js/main.js -->
 <script src="bower_components/foundation/js/foundation.js"></script>
+<script src="js/bugbook.main.js"></script>
 <!-- endbuild -->
 
 	</body>

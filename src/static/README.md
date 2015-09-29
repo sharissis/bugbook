@@ -2,11 +2,6 @@
 
 ##Project Info:
 
-###SVN
-Add `dist`, `.sass-cache', `node_modules` to SVN ignore if not already ignored.
-
-##READ THIS
-
 Setup:
 - Install Node Modules and Bower Components.
     - `npm install`
@@ -28,7 +23,7 @@ Deploy:
 	- `grunt deploy`
 
 
-##CONVENTIONS
+##Conventions
 1) Modules
 - module names must match for both the `.hbs` and `.scss`.
  - ex: `assemble/modules/_global-footer.hbs` & `sass/modules/_global-footer.scss`

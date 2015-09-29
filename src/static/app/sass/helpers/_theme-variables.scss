@@ -13,5 +13,18 @@
 // font size, z index, etc.
 
 @import 'color-palette/_color';
+@import "../bower_components/foundation/scss/foundation/_functions";
 
 $fontsize: 16;
+$spacing: rem-calc($fontsize);
+
+// Colors
+$white: #FFF;
+$black: #000;
+$pacific-blue: #00A2C5;
+$ziggurat: #BFDBE2;
+$blue-lagoon: #017987;
+$atoll: #0A6F75;
+
+$default-font-color: $ziggurat;
+$body-background-color: $atoll;

@@ -5,6 +5,8 @@ body {
 
 	font-size: #{$fontsize}px;
 	line-height: 1.4;
+	background-color: $body-background-color;
+	color: $default-font-color;
 
 	* {
 		// Better defaults for `background` so we can just do background: url(image) and not have to set anything else.
