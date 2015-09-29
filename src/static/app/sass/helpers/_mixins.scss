@@ -1,0 +1,6 @@
+@import 'mixins/_layout';
+
+// Use foundation em-calc() for font sizing, margin, and padding.
+// margin: em-calc(16px 0); ==> margin: 1em 0;
+
+// Use Autoprefixer for vendor prefixes. Autoprefixer comes with the project generator.

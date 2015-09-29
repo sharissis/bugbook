@@ -1,0 +1,36 @@
+// Set word-break back to normal so that text inputs don't wrap
+input[type='text'],
+input[type='email'],
+input[type='url'],
+input[type='password'],
+input[type='search'] {
+	word-break: normal;
+}
+
+// Allow only vertical resizing of textareas.
+textarea {
+	resize: vertical;
+}
+
+// Remove default fieldset styles.
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+// Opinion: Background color to white, and shrink if necessary
+input[type='text'],
+input[type='email'],
+input[type='url'],
+input[type='password'],
+input[type='search'],
+textarea,
+select {
+	background-color: palette('white');
+	max-width: 100%;
+}
+
+// Opinion: Add some padding around checkboxes and radio buttons
+input[type='radio'],
+input[type='checkbox'] { margin: 0 0.4em; }

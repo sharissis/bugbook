@@ -1,0 +1,36 @@
+{
+  "name": "sass_boilerplate",
+  "version": "1.2.0",
+  "description": "https://github.com/BarkleyREI/sass_boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BarkleyREI/sass_boilerplate"
+  },
+  "author": {
+    "name": "Ian Moffitt",
+    "email": "nessthehero@gmail.com",
+    "url": "https://github.com/nessthehero"
+  },
+  "contributors": [
+    {
+    "name": "Ian Moffitt",
+    "email": "nessthehero@gmail.com",
+    "url": "https://github.com/nessthehero"
+    }, {
+      "name": "Ryan Sprake",
+      "url": "https://github.com/eightdotthree"
+    }, {
+      "name": "Joseph Dillon",
+      "url": "https://github.com/jdillon522"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BarkleyREI/sass_boilerplate/issues"
+  },
+  "homepage": "https://github.com/BarkleyREI/sass_boilerplate"
+}

@@ -1,0 +1,11 @@
+// A better looking default horizontal rule
+hr {
+	border: 0;
+	border-top: 1px solid palette('border');
+
+	display: block;
+	height: 1px;
+
+	margin: 1em 0;
+	padding: 0;
+}

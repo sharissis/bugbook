@@ -1,0 +1,24 @@
+---
+layout: index.hbs
+---
+
+<h1>Bug Book</h1>
+
+<h2>Templates</h2>
+<ul class="zebra-striping">
+    {{#withSort template 'data.title'}}
+		{{#each this.pages }}
+			<li><a href="{{ replaceStr this.dest 'app' '' }}">{{ this.data.title }}</a></li>
+		{{/each}}
+	{{/withSort}}
+</ul>
+
+<h2>Modules</h2>
+<ul class="zebra-striping">
+    {{#withSort module 'data.title'}}
+		{{#each this.pages }}
+			<li><a href="{{ replaceStr this.dest 'app' '' }}">{{ this.data.title }}</a></li>
+		{{/each}}
+	{{/withSort}}
+</ul>
+

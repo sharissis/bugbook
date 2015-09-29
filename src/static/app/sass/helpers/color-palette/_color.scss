@@ -1,0 +1,5 @@
+@import '_color-map';
+
+@function palette($palette, $tone: 'core') {
+	@return map-get(map-get($palettes, $palette), $tone);
+}
