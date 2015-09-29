@@ -1,0 +1,24 @@
+.add-bug-form {
+	
+	input[type='text'] {
+
+		&:nth-child(even) {
+			@include bp(medium-up) {
+				margin-left: $spacing/2;
+			}
+		}
+
+		&:nth-child(odd) {
+			@include bp(medium-up) {
+				margin-right: $spacing/2;
+			}
+		}
+
+		@include bp(medium-up) {
+			float: left;
+			width: calc(50% - (#{$spacing}/2));
+		}
+
+	}
+
+}

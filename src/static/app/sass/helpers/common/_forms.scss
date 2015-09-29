@@ -34,3 +34,42 @@ select {
 // Opinion: Add some padding around checkboxes and radio buttons
 input[type='radio'],
 input[type='checkbox'] { margin: 0 0.4em; }
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"],
+textarea {
+	color: $almost-black;
+	background-color: $almost-white;
+	font-size: em-calc(16);
+	border-radius: $form-el-border-radius;
+	padding: em-calc(10);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"] {
+	height: $input-height;
+}

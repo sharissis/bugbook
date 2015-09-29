@@ -1,0 +1,25 @@
+---
+title: "add-bug-form"
+layout: module.hbs
+module: true
+---
+
+<div class="add-bug-form" data-module="add-bug-form">
+	
+	<div class="row">
+		<div class="small-12 clearfix">
+			<input type="text" id="js-title-input" class="title-input" placeholder="Title">
+			<input type="text" id="js-link-input" class="link-input" placeholder="Link">
+			<textarea id="js-link-desc" class="link-desc" placeholder="Description/Explanation"></textarea>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="small-12">
+			<button id="js-submit-bug" class="submit-bug">Add Bug</button>
+		</div>
+	</div>
+
+	{{> validation-alerts }}
+
+</div>

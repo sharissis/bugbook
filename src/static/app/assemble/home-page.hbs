@@ -7,10 +7,6 @@ layout: default.hbs
 
 <h1>Bug Book</h1>
 
-<input type="text" id="js-title-input" class="title-input" placeholder="Title">
-<input type="text" id="js-link-input" class="link-input" placeholder="Link">
-<button id="js-submit-bug" class="submit-bug">Add Bug</button>
+{{> _add-bug-form }}
 
-<div id='js-bugs'>
-	<ul></ul>
-</div>
+{{> _bugs-list }}

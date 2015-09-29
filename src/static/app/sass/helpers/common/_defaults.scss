@@ -14,3 +14,11 @@ img,
 video {
 	vertical-align: middle;
 }
+
+p {
+	margin: 0 0 $spacing;
+}
+
+textarea {
+	min-height: $input-height;
+}

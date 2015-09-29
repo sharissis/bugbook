@@ -15,16 +15,49 @@
 @import 'color-palette/_color';
 @import "../bower_components/foundation/scss/foundation/_functions";
 
-$fontsize: 16;
-$spacing: rem-calc($fontsize);
+// Foundation Overwrites
+$grid-max-width: 1000;
+
+$small-lower-bound: 0em; // 0px
+$small-upper-bound: 47.9375em; // 767px
+$medium-lower-bound: 48em; // 768px
+$medium-upper-bound: 62.4375em; // 999px
+$large-lower-bound: 62.5em; // 1000px
+$large-upper-bound: em-calc($grid-max-width - 1); // 1399px
+$xlarge-lower-bound: em-calc($grid-max-width); // 1400px
+$xlarge-upper-bound: 99.9375em; // 1599px
+$xxlarge-lower-bound: 100em; // 1600px
+
+$small-range: ($small-lower-bound, $small-upper-bound); // 0px, 767px
+$medium-range: ($medium-lower-bound, $medium-upper-bound); // 768px, 999px
+$large-range: ($large-lower-bound, $large-upper-bound); // 1000px, 1399px
+$xlarge-range: ($xlarge-lower-bound, $xlarge-upper-bound); // 1400px, 1599px
+$xxlarge-range: ($xxlarge-lower-bound); // 1600px and up
+
+$row-width: em-calc($grid-max-width);
 
 // Colors
 $white: #FFF;
 $black: #000;
-$pacific-blue: #00A2C5;
+$almost-white: #F3F6F7;
+$almost-black: #011819;
 $ziggurat: #BFDBE2;
 $blue-lagoon: #017987;
 $atoll: #0A6F75;
+$blue-chill: #0C8990;
 
-$default-font-color: $ziggurat;
-$body-background-color: $atoll;
+$default-font-color: $almost-black;
+$body-background-color: $blue-chill;
+$button-font-color: $almost-black;
+$button-background-color: $ziggurat;
+$button-hover-background-color: $almost-white;
+
+// Fonts
+$rubik: 'Rubik', 'Helvetica Neue', Arial, sans-serif;
+
+// Measurements
+$fontsize: 16;
+$spacing: rem-calc($fontsize);
+$body-line-height: 1.25;
+$form-el-border-radius: em-calc(2);
+$input-height: em-calc(45);

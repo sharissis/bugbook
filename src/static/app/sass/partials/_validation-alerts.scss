@@ -1,0 +1,12 @@
+.validation-alerts {
+	
+	p {
+		display: none;
+
+		&.active {
+			display: block;
+		}
+		
+	}
+
+}

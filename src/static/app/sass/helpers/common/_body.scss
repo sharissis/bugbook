@@ -4,8 +4,10 @@
 body {
 
 	font-size: #{$fontsize}px;
-	line-height: 1.4;
+	font-family: $rubik;
+	line-height: $body-line-height;
 	background-color: $body-background-color;
+	// background-image: url(i/tiny-grid.png);
 	color: $default-font-color;
 
 	* {
@@ -20,6 +22,9 @@ body {
 		// Allow non-breaking characters to wrap
 		word-break: break-word;
 		word-wrap: break-word;
+
+		font-family: $rubik;
+		line-height: $body-line-height;
 
 		&,
 		&:before,

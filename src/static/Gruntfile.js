@@ -19,7 +19,7 @@ var options = {
 // 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
-	var configs = require('load-grunt-configs')(grunt, options);
+	var configs = require('load-grunt-configs')(grunt, options); // jshint ignore:line
 
 	// build a custom version of modernizr
 	grunt.loadNpmTasks('grunt-modernizr');
@@ -54,8 +54,7 @@ module.exports = function (grunt) {
 	});
 
 	grunt.registerTask('check', [
-		'jshint',
-		'scsslint'
+		'jshint'
 	]);
 
 	grunt.registerTask('build', [

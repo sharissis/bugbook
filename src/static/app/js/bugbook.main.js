@@ -1,6 +1,7 @@
 /*global window:false */
 /*global $:false */
 /*jslint plusplus: true */
+/*global Firebase:false */
 
 // Firebase Data: https://pvzp1paydyr.firebaseio-demo.com
 
@@ -23,8 +24,8 @@ var bugbook = bugbook || {};
 			});
 			
 			// For each bug, display it
-			bugbookRef.on('child_added', function(bug) {
-				var bug = bug.val();
+			bugbookRef.on('child_added', function(item) {
+				var bug = item.val();
 				bugbook.main.displayBug(bug.title, bug.link);
 			});
 
@@ -46,7 +47,7 @@ var bugbook = bugbook || {};
 
 		// Appends bug entry to a list of bugs
 		displayBug: function(title, link) {
-			$('#js-bugs > ul').append('<li><a href="' + link + '" title="' + title + '" target="_blank">' + title + '</a></li>');
+			$('#js-bugs-list > ul').append('<li><a href="' + link + '" title="' + title + '" target="_blank">' + title + '</a></li>');
 		}
 
 	};

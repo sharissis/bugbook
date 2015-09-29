@@ -1,0 +1,27 @@
+button, .button {
+	color: $almost-black;
+	background-color: $button-background-color;
+	line-height: 1.125;
+	font-size: em-calc(16);
+	border-radius: $form-el-border-radius;
+	padding: $spacing em-calc(18);
+	max-width: 100%;
+	margin: 0 0 $spacing em-calc(12);
+	@include transition(all, 0.25s, ease);
+
+	&:first-of-type {
+		margin: 0 0 $spacing;
+	}
+
+	&:hover {
+		color: $almost-black;
+		background-color: $button-hover-background-color;
+
+		.touch & {
+			color: $almost-black;
+			background-color: $button-background-color;
+		}
+
+	}
+
+}
