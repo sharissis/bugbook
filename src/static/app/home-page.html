@@ -11,8 +11,7 @@
 
 		<title>Home Page</title>
 
-		// empty
-
+		
 
 		<!-- build:css css/main.css -->
 <link rel="stylesheet" href="css/main.css" />
@@ -22,19 +21,54 @@
 <script src="bower_components/modernizr/modernizr.js"></script>
 <!-- endbuild -->
 
+		<!-- build:js js/plugins/firebase.js -->
+<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+<!-- endbuild -->
+
+		<!-- build:js js/jquery.js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<!-- endbuild -->
+
 	</head>
 
-		<body class="one-column">
+	<body class="home">
 
-			<div class="container">
-				
-<h1>Home Page</h1>
-			</div>
+		<div class="container">
+			
 
-			<!-- build:js js/main.js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
+
+
+<div id='messagesDiv'></div>
+
+<input type='text' id='nameInput' placeholder='Name'>
+<input type='text' id='messageInput' placeholder='Message'>
+
+<script>
+	var myDataRef = new Firebase('https://pvzp1paydyr.firebaseio-demo.com/');
+	$('#messageInput').keypress(function (e) {
+		if (e.keyCode == 13) {
+			var name = $('#nameInput').val();
+			var text = $('#messageInput').val();
+			myDataRef.push({name: name, text: text});
+			$('#messageInput').val('');
+		}
+	});
+	myDataRef.on('child_added', function(snapshot) {
+		console.log(snapshot);
+		var message = snapshot.val();
+		displayChatMessage(message.name, message.text);
+	});
+	function displayChatMessage(name, text) {
+		$('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+		$('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+	};
+</script>
+		</div>
+
+		<!-- build:js js/main.js -->
 <script src="bower_components/foundation/js/foundation.js"></script>
 <!-- endbuild -->
 
-		</body>
+	</body>
+
 </html>

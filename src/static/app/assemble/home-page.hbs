@@ -1,6 +1,34 @@
 ---
 title: Home Page
 template: true
-body-class: "one-column"
+body-class: "home"
+layout: default.hbs
 ---
-<h1>Home Page</h1>
+
+{{!-- Firebase Data: https://pvzp1paydyr.firebaseio-demo.com/ --}}
+
+<div id='messagesDiv'></div>
+
+<input type='text' id='nameInput' placeholder='Name'>
+<input type='text' id='messageInput' placeholder='Message'>
+
+<script>
+	var myDataRef = new Firebase('https://pvzp1paydyr.firebaseio-demo.com/');
+	$('#messageInput').keypress(function (e) {
+		if (e.keyCode == 13) {
+			var name = $('#nameInput').val();
+			var text = $('#messageInput').val();
+			myDataRef.push({name: name, text: text});
+			$('#messageInput').val('');
+		}
+	});
+	myDataRef.on('child_added', function(snapshot) {
+		console.log(snapshot);
+		var message = snapshot.val();
+		displayChatMessage(message.name, message.text);
+	});
+	function displayChatMessage(name, text) {
+		$('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+		$('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+	};
+</script>

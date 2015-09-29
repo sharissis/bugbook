@@ -1,13 +1,5 @@
 # Bug Book
 
-CMS:
-
-Confulence:
-
-JIRA:
-
-Epic:
-
 ##Project Info:
 
 ###SVN
