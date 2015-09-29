@@ -4,7 +4,14 @@
 		display: none;
 
 		&.active {
+			opacity: 0;
 			display: block;
+			@include transition(opacity, 0.75s);
+
+			&.show {
+				opacity: 1;
+			}
+
 		}
 		
 	}
