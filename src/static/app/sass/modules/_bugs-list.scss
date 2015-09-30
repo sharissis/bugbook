@@ -1,3 +1,21 @@
 .bugs-list {
-	// Awesome styles
+	
+	.bugs-list-empty, ul {
+		margin: 0;
+	}
+
+	.bugs-list-empty {
+		opacity: 0;
+		@include transition(opacity, 0.5s);
+
+		&.show {
+			opacity: 1;
+		}
+
+	}
+
+	ul {
+		list-style: none;
+	}
+
 }

@@ -8,8 +8,20 @@
 		background-color: $almost-white;
 		margin: $spacing;
 
+		&:first-of-type {
+			@include bp(large-up) {
+				margin: $spacing*3 auto $spacing;
+			}
+		}
+
+		&:last-of-type {
+			@include bp(large-up) {
+				margin: $spacing auto $spacing*3;
+			}
+		}
+
 		@include bp(large-up) {
-			margin: $spacing*3 auto;
+			margin: $spacing auto;
 		}
 
 	}
@@ -18,4 +30,31 @@
 
 .home {
 
+	h1 {
+
+		&:hover i {
+			transform: rotate(360deg);
+			color: $cascade;
+		}
+
+		i {
+			@include transition(all, 0.75s);
+		}
+
+	}
+
+}
+
+.tooltip {
+	display: none;
+	z-index: 999;
+	font-size: em-calc(12);
+	border-radius: $common-border-radius;
+	border: 1px solid $cascade;
+	background-color: $alert-background-color;
+	padding: em-calc(10);
+	position: absolute;
+	right: em-calc(45);
+	top: em-calc(12);
+	max-width: em-calc(200);
 }

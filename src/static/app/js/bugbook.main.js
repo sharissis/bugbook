@@ -17,14 +17,26 @@ var bugbook = bugbook || {};
 
 		init: function () {
 
+			var emptyMessage = $('#js-bugs-list-empty');
+
 			$('#js-submit-bug').on('click', function() {
 				bugbook.main.addBug();
 			});
+
+			setTimeout(function() {
+				$(emptyMessage).addClass('show');
+			}, 500);
 			
 			// For each bug, display it
 			bugbookRef.on('child_added', function(item) {
 				var bug = item.val();
-				bugbook.main.displayBug(bug.title, bug.link, bug.desc);
+
+				if (emptyMessage.length > 0) {
+					$(emptyMessage).remove();
+				}
+
+				bugbook.main.displayBug(bug.title, bug.link, bug.desc, bug.tags);
+
 			});
 
 		},
@@ -33,81 +45,93 @@ var bugbook = bugbook || {};
 		addBug: function() {
 			var title = $('#js-title-input').val(),
 				link = $('#js-link-input').val(),
-				desc = $('#js-link-desc').val(),
+				desc = $('#js-desc-input').val(),
+				tags = $('#js-tags-input').val(),
 				missingFieldAlert = $('#js-missing-field'),
 				blankTitleAlert = $('#js-blank-title'),
-				invalidUrlAlert = $('#js-invalid-url');
+				invalidUrlAlert = $('#js-invalid-url'),
+				noTagsAlert = $('#js-no-tags');
 
-			if (!title || title.replace(/\s/g, '') === '') { // If there's no title...
+			console.log(title);
+			console.log(link);
+			console.log(desc);
+			console.log(tags);
 
-				bugbook.main.fadeAlert(blankTitleAlert); // Show validation alert
+			// If there's no title...
+			if (!title || title.replace(/\s/g, '') === '') {
+				// Show validation alert
+				bugbook.main.fadeAlert(blankTitleAlert);
+			}
 
-			} else { // Otherwise...
+			// If there are no tags...
+			if (tags.length < 1) {
+				// Show validation alert
+				bugbook.main.fadeAlert(noTagsAlert);
+			} else {
+				// Split tags into array
+				tags = tags.split(',');
 
-				if ((link && link.replace(/\s/g, '') !== '') || (desc && desc.replace(/\s/g, '') !== '')) { // If there's a link, description, or both...
+				// Remove extra spaces from around each tag
+				$.each(tags, function(i) {
+					var string = tags[i];
+					tags[i] = string.trim();
+				});
 
-					if (link) {
-						var valid = bugbook.main.validateUrl(link);
+			}
 
-						if (valid) {
+			// If there's a link, description, or both...
+			if ((link && link.replace(/\s/g, '') !== '') || (desc && desc.replace(/\s/g, '') !== '')) {
 
-							var httpRegex = new RegExp('^(http|https)://.*$'),
-								hasHttp = httpRegex.test(link);
+				if (link) {
+					var valid = bugbook.main.validateUrl(link);
 
-							if (!hasHttp) {
-								link = 'http://' + link;
-							}
+					if (valid) {
 
-							if (desc) {
+						var httpRegex = new RegExp('^(http|https)://.*$'),
+							hasHttp = httpRegex.test(link);
 
-								bugbookRef.push({
-									title: title,
-									link: link,
-									desc: desc
-								});
-
-							} else {
-
-								bugbookRef.push({
-									title: title,
-									link: link,
-									desc: ''
-								});
-
-							}
-
-							bugbook.main.clearFields();
-
-						} else {
-							bugbook.main.fadeAlert(invalidUrlAlert); // Show validation alert
+						if (!hasHttp) {
+							link = 'http://' + link;
 						}
-
-					} else {
 
 						bugbookRef.push({
 							title: title,
-							link: '',
-							desc: desc
+							link: link,
+							desc: desc || '',
+							tags: tags
 						});
 
 						bugbook.main.clearFields();
 
+					} else {
+						// Show validation alert
+						bugbook.main.fadeAlert(invalidUrlAlert);
 					}
 
-				} else { // Otherwise...
+				} else {
 
-					bugbook.main.fadeAlert(missingFieldAlert); // Show validation alert
+					bugbookRef.push({
+						title: title,
+						link: '',
+						desc: desc,
+						tags: tags
+					});
+
+					bugbook.main.clearFields();
 
 				}
 
+			// Otherwise...
+			} else {
+				// Show validation alert
+				bugbook.main.fadeAlert(missingFieldAlert); 
 			}
 
 		},
 
 		// Appends bug entry to a list of bugs
-		displayBug: function(title, link, desc) {
-			// $('#js-bugs-list > ul').append('<li><a href="' + link + '" title="' + title + '" target="_blank">' + title + '</a></li>');
-			$('#js-bugs-list > ul').append('<li>Title: ' + title + '<br>Link: ' + link + '<br>Desc: ' + desc + '</li>');
+		displayBug: function(title, link, desc, tags) {
+			$('#js-bugs-list > ul').append('<li>Title: ' + title + '<br>Link: ' + link + '<br>Desc: ' + desc + '<br>Tags: ' + tags + '</li>');
 		},
 
 		fadeAlert: function(el) {
@@ -137,7 +161,8 @@ var bugbook = bugbook || {};
 		clearFields: function() {
 			$('#js-title-input').val(''); // Clear field
 			$('#js-link-input').val(''); // Clear field
-			$('#js-link-desc').val(''); // Clear field
+			$('#js-desc-input').val(''); // Clear field
+			$('#js-tags-input').val(''); // Clear field
 		}
 
 	};

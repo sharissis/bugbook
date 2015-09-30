@@ -2,6 +2,11 @@
 	
 	p {
 		display: none;
+		border-radius: $common-border-radius;
+		border: 1px solid $cascade;
+		background-color: $alert-background-color;
+		font-weight: 500;
+		padding: $spacing;
 
 		&.active {
 			opacity: 0;

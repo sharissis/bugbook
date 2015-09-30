@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
 
-    <title>bugs-list</title>
+    <title>header</title>
 
     <meta name="description" content="" />
 
@@ -21,21 +21,13 @@
 
     <link href='https://fonts.googleapis.com/css?family=Rubik:400,500,400italic,500italic' rel='stylesheet' type='text/css'>
 
-    <!-- build:css css/main.css -->
-<link rel="stylesheet" href="css/main.css" />
-<!-- endbuild -->
+    <link rel="stylesheet" href="css/main.css" />
 
-    <!-- build:js js/plugins/modernizr.js -->
-<script src="bower_components/modernizr/modernizr.js"></script>
-<!-- endbuild -->
+    <script src="js/plugins/modernizr.js"></script>
 
-    <!-- build:js js/plugins/firebase.js -->
-<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-<!-- endbuild -->
+    <script src="js/plugins/firebase.js"></script>
 
-    <!-- build:js js/jquery.js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<!-- endbuild -->
+    <script src="js/jquery.js"></script>
 
 </head>
 <body>
@@ -44,18 +36,20 @@
         
             
 
-<div id="js-bugs-list" class="bugs-list" data-module="bugs-list">
-	<p id="js-bugs-list-empty" class="bugs-list-empty">No results to display.</p>
-	<ul></ul>
-</div>
+<header class="header" data-module="header">
+
+	<h1>
+		<i class="fa fa-bug"></i>
+		<span class="title">bugbook</span>
+		<span class="tagline">Log and search commonly found bugs</span>
+	</h1>
+
+</header>
 
         
     </div>
 
-    <!-- build:js js/main.js -->
-<script src="bower_components/foundation/js/foundation.js"></script>
-<script src="js/bugbook.main.js"></script>
-<!-- endbuild -->
+    <script src="js/main.js"></script>
 
 </body>
 </html>

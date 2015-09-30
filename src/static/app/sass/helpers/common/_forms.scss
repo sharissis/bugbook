@@ -50,11 +50,52 @@ input[type="time"],
 input[type="url"],
 input[type="color"],
 textarea {
-	color: $almost-black;
-	// background-color: $almost-white;
-	font-size: em-calc(16);
+	color: $default-font-color;
+	font-size: em-calc(14);
 	border-radius: $common-border-radius;
 	padding: em-calc(10);
+
+	&:focus {
+		box-shadow: 0 0 5px $bison-hide;
+	}
+
+	&.has-tooltip {
+		padding: em-calc(10) em-calc(45) em-calc(10) em-calc(10);
+
+		+ .fa {
+			cursor: pointer;
+			color: $bison-hide;
+			font-size: em-calc(20);
+			text-align: center;
+			line-height: em-calc(45);
+			position: absolute;
+			right: 0;
+			top: 0;
+			height: em-calc(45);
+			width: em-calc(45);
+			@include transition;
+
+			&:hover {
+				color: darken($bison-hide, 7.5%);
+
+				+ .tooltip {
+					display: block;
+				}
+				
+			}
+
+			> span {
+				display: none;
+			}
+
+		}
+
+	}
+
+	@include bp(medium-up) {
+		font-size: em-calc(16);
+	}
+
 }
 
 input[type="text"],

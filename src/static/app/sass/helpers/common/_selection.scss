@@ -2,6 +2,6 @@
 // These selection rule sets have to be separate.
 // Customize the background color to match your design.
 ::selection {
-	background: palette('root', 'selection');
+	background: $ziggurat;
 	text-shadow: none;
 }

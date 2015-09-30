@@ -19,7 +19,7 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <link href='https://fonts.googleapis.com/css?family=Rubik:400,300,500' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Rubik:400,500,400italic,500italic' rel='stylesheet' type='text/css'>
 
     <!-- build:css css/main.css -->
 <link rel="stylesheet" href="css/main.css" />
@@ -48,15 +48,47 @@
 	
 	<div class="row">
 		<div class="small-12 clearfix">
-			<input type="text" id="js-title-input" class="title-input" placeholder="Title">
-			<input type="text" id="js-link-input" class="link-input" placeholder="Link">
-			<textarea id="js-link-desc" class="link-desc" placeholder="Description/Explanation"></textarea>
+			
+			<div class="input-container half-width">
+				<input type="text" id="js-title-input" class="title-input has-tooltip" placeholder="Title">
+				<i class="fa fa-question-circle">
+					<span>Information on how to fill in this field</span>
+				</i>
+				<div class="tooltip">This is the tooltip for the field. Lorem ipsum dolor sit amet.</div>
+			</div>
+
+			<div class="input-container half-width">
+				<input type="text" id="js-link-input" class="link-input has-tooltip" placeholder="Link">
+				<i class="fa fa-question-circle">
+					<span>Information on how to fill in this field</span>
+				</i>
+				<div class="tooltip">This is the tooltip for the field. Lorem ipsum dolor sit amet.</div>
+			</div>
+
+			<div class="input-container">
+				<textarea id="js-desc-input" class="desc-input has-tooltip" placeholder="Description/Explanation"></textarea>
+				<i class="fa fa-question-circle">
+					<span>Information on how to fill in this field</span>
+				</i>
+				<div class="tooltip">This is the tooltip for the field. Lorem ipsum dolor sit amet.</div>
+			</div>
+
+			<div class="input-container">
+				<input type="text" id="js-tags-input" class="tags-input has-tooltip" placeholder="Tags (separated by commas)">
+				<i class="fa fa-question-circle">
+					<span>Information on how to fill in this field</span>
+				</i>
+				<div class="tooltip">This is the tooltip for the field. Lorem ipsum dolor sit amet.</div>
+			</div>
+			
 		</div>
 	</div>
 	
 	<div class="row">
 		<div class="small-12">
+
 			<button id="js-submit-bug" class="submit-bug">Add Bug</button>
+
 		</div>
 	</div>
 
@@ -67,6 +99,7 @@
 			<p id="js-missing-field" class="missing-field">You must enter either a link, a description/explanation, or both.</p>
 			<p id="js-blank-title" class="blank-title">Please enter a title.</p>
 			<p id="js-invalid-url" class="invalid-url">Please enter a valid URL.</p>
+			<p id="js-no-tags" class="no-tags">Please enter at least one tag.</p>
 				
 		</div>
 	</div>

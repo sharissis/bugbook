@@ -8,15 +8,47 @@ module: true
 	
 	<div class="row">
 		<div class="small-12 clearfix">
-			<input type="text" id="js-title-input" class="title-input" placeholder="Title">
-			<input type="text" id="js-link-input" class="link-input" placeholder="Link">
-			<textarea id="js-link-desc" class="link-desc" placeholder="Description/Explanation"></textarea>
+			
+			<div class="input-container half-width">
+				<input type="text" id="js-title-input" class="title-input has-tooltip" placeholder="Title">
+				<i class="fa fa-question-circle">
+					<span>Information on how to fill in this field</span>
+				</i>
+				<div class="tooltip">This is the tooltip for the field. Lorem ipsum dolor sit amet.</div>
+			</div>
+
+			<div class="input-container half-width">
+				<input type="text" id="js-link-input" class="link-input has-tooltip" placeholder="Link">
+				<i class="fa fa-question-circle">
+					<span>Information on how to fill in this field</span>
+				</i>
+				<div class="tooltip">This is the tooltip for the field. Lorem ipsum dolor sit amet.</div>
+			</div>
+
+			<div class="input-container">
+				<textarea id="js-desc-input" class="desc-input has-tooltip" placeholder="Description/Explanation"></textarea>
+				<i class="fa fa-question-circle">
+					<span>Information on how to fill in this field</span>
+				</i>
+				<div class="tooltip">This is the tooltip for the field. Lorem ipsum dolor sit amet.</div>
+			</div>
+
+			<div class="input-container">
+				<input type="text" id="js-tags-input" class="tags-input has-tooltip" placeholder="Tags (separated by commas)">
+				<i class="fa fa-question-circle">
+					<span>Information on how to fill in this field</span>
+				</i>
+				<div class="tooltip">This is the tooltip for the field. Lorem ipsum dolor sit amet.</div>
+			</div>
+			
 		</div>
 	</div>
 	
 	<div class="row">
 		<div class="small-12">
+
 			<button id="js-submit-bug" class="submit-bug">Add Bug</button>
+
 		</div>
 	</div>
 

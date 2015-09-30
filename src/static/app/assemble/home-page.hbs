@@ -2,11 +2,19 @@
 title: Home Page
 template: true
 body-class: "home"
-layout: default.hbs
+layout: home-page.hbs
 ---
 
-<h1><i class="fa fa-bug"></i> bugbook</h1>
+<div class="container">
+	
+	{{> _header }}
 
-{{> _add-bug-form }}
+	{{> _add-bug-form }}
 
-{{> _bugs-list }}
+</div>
+
+<div class="container">
+	
+	{{> _bugs-list }}
+
+</div>

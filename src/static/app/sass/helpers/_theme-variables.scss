@@ -41,7 +41,7 @@ $white: #FFF;
 $black: #000;
 $almost-white: #f7f8f4;
 $almost-black: #1c1815;
-// $ziggurat: #BFDBE2;
+$ziggurat: #BFDBE2;
 // $blue-lagoon: #017987;
 // $atoll: #0A6F75;
 // $blue-chill: #0C8990;
@@ -53,14 +53,16 @@ $almost-black: #1c1815;
 // $silver-rust: #cbbeb5;
 $bison-hide: #bfb6a9;
 $cascade: #8BAFA9;
-// $cape-cod: #394A41;
+$cape-cod: #394A41;
 $dark-slate-gray: #314C46;
+$champagne: #f7edc7;
 
-$default-font-color: $dark-slate-gray;
+$default-font-color: $cape-cod;
 $body-background-color: $cascade;
 $button-font-color: $white;
 $button-background-color: $bison-hide;
 $button-hover-background-color: darken($button-background-color, 7.5%);
+$alert-background-color: $champagne;
 
 // Fonts
 $rubik: 'Rubik', 'Helvetica Neue', Arial, sans-serif;
