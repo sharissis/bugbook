@@ -51,9 +51,9 @@ input[type="url"],
 input[type="color"],
 textarea {
 	color: $almost-black;
-	background-color: $almost-white;
+	// background-color: $almost-white;
 	font-size: em-calc(16);
-	border-radius: $form-el-border-radius;
+	border-radius: $common-border-radius;
 	padding: em-calc(10);
 }
 

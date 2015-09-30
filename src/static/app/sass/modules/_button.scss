@@ -1,9 +1,11 @@
 button, .button {
-	color: $almost-black;
+	color: $button-font-color;
 	background-color: $button-background-color;
 	line-height: 1.125;
 	font-size: em-calc(16);
-	border-radius: $form-el-border-radius;
+	font-weight: 500;
+	text-shadow: 1px 1px 0px rgba(70, 70, 70, 0.3);
+	border-radius: $common-border-radius;
 	padding: $spacing em-calc(18);
 	max-width: 100%;
 	margin: 0 0 $spacing em-calc(12);
@@ -13,12 +15,12 @@ button, .button {
 		margin: 0 0 $spacing;
 	}
 
-	&:hover {
-		color: $almost-black;
+	&:hover, &:focus {
+		color: $button-font-color;
 		background-color: $button-hover-background-color;
 
 		.touch & {
-			color: $almost-black;
+			color: $button-font-color;
 			background-color: $button-background-color;
 		}
 

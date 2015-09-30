@@ -2,4 +2,20 @@
 	padding: $spacing;
 	max-width: em-calc($grid-max-width);
 	margin: 0 auto;
+
+	.home & {
+		border-radius: em-calc(4);
+		background-color: $almost-white;
+		margin: $spacing;
+
+		@include bp(large-up) {
+			margin: $spacing*3 auto;
+		}
+
+	}
+
+}
+
+.home {
+
 }
