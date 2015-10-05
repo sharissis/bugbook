@@ -21,8 +21,8 @@ $grid-max-width: 1000;
 $small-lower-bound: 0em; // 0px
 $small-upper-bound: 47.9375em; // 767px
 $medium-lower-bound: 48em; // 768px
-$medium-upper-bound: 62.4375em; // 999px
-$large-lower-bound: 62.5em; // 1000px
+$medium-upper-bound: em-calc($grid-max-width - 1) + 2rem; // 1031px
+$large-lower-bound: em-calc($grid-max-width) + 2rem; // 1032px
 $large-upper-bound: em-calc($grid-max-width - 1); // 1399px
 $xlarge-lower-bound: em-calc($grid-max-width); // 1400px
 $xlarge-upper-bound: 99.9375em; // 1599px
@@ -54,8 +54,10 @@ $ziggurat: #BFDBE2;
 $bison-hide: #bfb6a9;
 $cascade: #8BAFA9;
 $cape-cod: #394A41;
-$dark-slate-gray: #314C46;
 $champagne: #f7edc7;
+$lochinvar: #1e958a;
+$copper: #B87333;
+$judge-gray: #544333;
 
 $default-font-color: $cape-cod;
 $body-background-color: $cascade;
@@ -63,6 +65,9 @@ $button-font-color: $white;
 $button-background-color: $bison-hide;
 $button-hover-background-color: darken($button-background-color, 7.5%);
 $alert-background-color: $champagne;
+$border-color: darken($almost-white, 25%);
+$link-color: $copper;
+$link-hover-color: $judge-gray;
 
 // Fonts
 $rubik: 'Rubik', 'Helvetica Neue', Arial, sans-serif;
@@ -72,4 +77,5 @@ $fontsize: 16;
 $spacing: rem-calc($fontsize);
 $body-line-height: 1.25;
 $common-border-radius: em-calc(2);
+$common-border: 1px solid $border-color;
 $input-height: em-calc(45);

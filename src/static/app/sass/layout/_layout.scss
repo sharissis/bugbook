@@ -26,6 +26,10 @@
 
 	}
 
+	@include bp(large-up) {
+		padding: $spacing*2;
+	}
+
 }
 
 .home {

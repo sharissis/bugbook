@@ -22,3 +22,14 @@ p {
 textarea {
 	min-height: $input-height;
 }
+
+a {
+	color: $link-color;
+	@include transition(color, 0.25s);
+
+	&:hover, &:focus {
+		color: $link-hover-color;
+		text-decoration: none;
+	}
+
+}

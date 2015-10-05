@@ -19,8 +19,16 @@ var bugbook = bugbook || {};
 
 			var emptyMessage = $('#js-bugs-list-empty');
 
+			// Submit bug on button click
 			$('#js-submit-bug').on('click', function() {
 				bugbook.main.addBug();
+			});
+
+			// Submit bug on enter
+			$(document).keypress(function(e) {
+			    if (e.which == 13) {
+			        bugbook.main.addBug();
+			    }
 			});
 
 			setTimeout(function() {
@@ -74,7 +82,7 @@ var bugbook = bugbook || {};
 				// Remove extra spaces from around each tag
 				$.each(tags, function(i) {
 					var string = tags[i];
-					tags[i] = string.trim();
+					tags[i] = string.trim().toLowerCase();
 				});
 
 			}
@@ -131,7 +139,19 @@ var bugbook = bugbook || {};
 
 		// Appends bug entry to a list of bugs
 		displayBug: function(title, link, desc, tags) {
-			$('#js-bugs-list > ul').append('<li>Title: ' + title + '<br>Link: ' + link + '<br>Desc: ' + desc + '<br>Tags: ' + tags + '</li>');
+
+			if (desc) {
+
+				if (link) {
+					$('#js-bugs-list > ul').append('<li class="accordion"><i class="toggle fa fa-plus-circle"></i><a class="title" href="' + link + '" title="' + title + '" target="_blank">' + title + '</a><div class="desc">' + desc + '</div></li>');
+				} else {
+					$('#js-bugs-list > ul').append('<li class="accordion"><i class="toggle fa fa-plus-circle"></i><span class="title">' + title + '</span><div class="desc">' + desc + '</div></li>');
+				}
+
+			} else {
+				$('#js-bugs-list > ul').append('<li><a class="title" href="' + link + '" title="' + title + '" target="_blank">' + title + '</a></li>');
+			}
+
 		},
 
 		fadeAlert: function(el) {
