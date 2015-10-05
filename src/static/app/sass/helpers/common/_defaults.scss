@@ -27,9 +27,12 @@ a {
 	color: $link-color;
 	@include transition(color, 0.25s);
 
-	&:hover, &:focus {
-		color: $link-hover-color;
+	&:hover, &:focus, &:active, &:visited {
 		text-decoration: none;
+	}
+
+	&:hover, &:focus, &:active {
+		color: $link-hover-color;
 	}
 
 }

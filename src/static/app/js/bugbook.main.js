@@ -11,7 +11,7 @@ var bugbook = bugbook || {};
 
 	'use strict';
 
-	var bugbookRef = new Firebase('https://pvzp1paydyr.firebaseio-demo.com/');
+	var bugbookRef = new Firebase('https://torrid-heat-7306.firebaseio.com/');
 
 	bugbook.main = {
 
@@ -26,7 +26,7 @@ var bugbook = bugbook || {};
 
 			// Submit bug on enter
 			$(document).keypress(function(e) {
-			    if (e.which == 13) {
+			    if (e.which === 13) {
 			        bugbook.main.addBug();
 			    }
 			});
@@ -45,6 +45,12 @@ var bugbook = bugbook || {};
 
 				bugbook.main.displayBug(bug.title, bug.link, bug.desc, bug.tags);
 
+			});
+
+			// Toggle accordions when toggle is clicked
+			$('body').on('click', '.js-toggle', function() {
+				var accordion = $(this).parent();
+				$(accordion).toggleClass('open');
 			});
 
 		},
@@ -143,13 +149,13 @@ var bugbook = bugbook || {};
 			if (desc) {
 
 				if (link) {
-					$('#js-bugs-list > ul').append('<li class="accordion"><i class="toggle fa fa-plus-circle"></i><a class="title" href="' + link + '" title="' + title + '" target="_blank">' + title + '</a><div class="desc">' + desc + '</div></li>');
+					$('#js-bugs-list > ul').append('<li class="js-accordion accordion clearfix"><i class="js-toggle toggle fa fa-plus-circle"></i><a class="title" href="' + link + '" title="' + title + '" target="_blank">' + title + ' <i class="fa fa-external-link-square"></i></a><div class="desc">' + desc + '</div></li>');
 				} else {
-					$('#js-bugs-list > ul').append('<li class="accordion"><i class="toggle fa fa-plus-circle"></i><span class="title">' + title + '</span><div class="desc">' + desc + '</div></li>');
+					$('#js-bugs-list > ul').append('<li class="js-accordion accordion clearfix"><i class="js-toggle toggle fa fa-plus-circle"></i><span class="title">' + title + '</span><div class="desc">' + desc + '</div></li>');
 				}
 
 			} else {
-				$('#js-bugs-list > ul').append('<li><a class="title" href="' + link + '" title="' + title + '" target="_blank">' + title + '</a></li>');
+				$('#js-bugs-list > ul').append('<li><a class="title" href="' + link + '" title="' + title + '" target="_blank">' + title + ' <i class="fa fa-external-link-square"></a></li>');
 			}
 
 		},
