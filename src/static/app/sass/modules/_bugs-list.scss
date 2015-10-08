@@ -94,7 +94,7 @@
 		.toggle {
 			cursor: pointer;
 			color: $bison-hide;
-			font-size: em-calc(24);
+			font-size: em-calc(27);
 			text-align: center;
 			line-height: em-calc(40);
 			position: absolute;
@@ -115,7 +115,7 @@
 			}
 
 			@include bp(medium-up) {
-				font-size: em-calc(32);
+				font-size: em-calc(35);
 				line-height: em-calc(52);
 				width: em-calc(50);
 				height: em-calc(52);

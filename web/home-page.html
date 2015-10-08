@@ -31,7 +31,7 @@
 	
 	
 
-<header class="header" data-module="header">
+<header class="header clearfix" data-module="header">
 
 	<h1>
 		<i class="fa fa-bug"></i>
@@ -39,12 +39,46 @@
 		<span class="tagline">Log and search commonly found bugs</span>
 	</h1>
 
+	<div class="menu clearfix" data-partial="menu">
+
+	<a id="js-search-toggle" href="javascript:void(0);" class="button toggle active" title="Search for Bugs">Search</a>
+
+	<a id="js-submit-toggle" href="javascript:void(0);" class="button toggle" title="Submit a Bug">Submit</a>
+
+</div>
+
+
 </header>
 
 
 	
 
-<div class="add-bug-form" data-module="add-bug-form">
+<div id="js-search-form" class="search-form active" data-module="search-form">
+
+	<div class="row">
+		<div class="small-12">
+
+			<div class="input-container">
+				<input type="text" id="js-search-input" class="search-input" placeholder="Search by tags">
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-12">
+
+			<button id="js-submit-search" class="submit-search">Search</button>
+
+		</div>
+	</div>
+
+</div>
+
+
+	
+
+<div id="js-submit-bug-form" class="submit-bug-form" data-module="submit-bug-form">
 	
 	<div class="row">
 		<div class="small-12 clearfix">
@@ -87,7 +121,7 @@
 	<div class="row">
 		<div class="small-12">
 
-			<button id="js-submit-bug" class="submit-bug">Add Bug</button>
+			<button id="js-submit-bug" class="submit-bug">Submit Bug</button>
 
 		</div>
 	</div>

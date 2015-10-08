@@ -1,0 +1,21 @@
+.menu {
+	float: left;
+	width: 100%;
+	
+	button, .button {
+		padding: em-calc(9) em-calc(12);
+		margin: 0;
+		width: 50%;
+
+		@include bp(custom, em-calc(500)) {
+			width: auto;
+		}
+
+	}
+
+	@include bp(custom, em-calc(500)) {
+		float: right;
+		width: auto;
+	}
+
+}

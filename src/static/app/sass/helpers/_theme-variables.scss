@@ -57,7 +57,7 @@ $cascade: #8BAFA9;
 $cape-cod: #394A41;
 $champagne: #f7edc7;
 // $lochinvar: #1e958a;
-$copper: #B87333;
+// $copper: #B87333;
 $judge-gray: #544333;
 
 $default-font-color: $cape-cod;
@@ -65,9 +65,10 @@ $body-background-color: $cascade;
 $button-font-color: $white;
 $button-background-color: $bison-hide;
 $button-hover-background-color: darken($button-background-color, 7.5%);
+$button-active-background-color: darken($button-background-color, 15%);
 $alert-background-color: $champagne;
 $border-color: darken($almost-white, 25%);
-$link-color: $copper;
+$link-color: darken($bison-hide, 25%);
 $link-hover-color: $judge-gray;
 
 // Fonts

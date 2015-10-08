@@ -1,12 +1,22 @@
 .header {
+	margin: 0 0 $spacing;
 
-	.fa, .title {
-		display: inline-block;
+	h1 {
+		float: left;
+
+		.fa, .title {
+			display: inline-block;
+		}
+
+		@include bp(medium-up) {
+			margin: 0;
+		}
+
 	}
 	
 	.tagline {
 		color: $bison-hide;
-		font-size: em-calc(14);
+		font-size: em-calc(13);
 		font-style: italic;
 		vertical-align: middle;
 		line-height: inherit;
@@ -15,6 +25,7 @@
 		margin: em-calc(5) 0 0 0;
 
 		@include bp(medium-up) {
+			font-size: em-calc(14);
 			display: inline-block;
 			margin: 0 0 0 em-calc(8);
 		}

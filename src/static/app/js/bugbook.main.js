@@ -19,15 +19,23 @@ var bugbook = bugbook || {};
 
 			var emptyMessage = $('#js-bugs-list-empty');
 
+			$('#js-search-toggle, #js-submit-toggle').on('click', function () {
+				
+				if (!($(this).hasClass('active'))) {
+					$('#js-search-toggle, #js-submit-toggle, #js-search-form, #js-submit-bug-form').toggleClass('active');
+				}
+
+			});
+
 			// Submit bug on button click
 			$('#js-submit-bug').on('click', function() {
-				bugbook.main.addBug();
+				bugbook.main.submitBug();
 			});
 
 			// Submit bug on enter
 			// $(document).keypress(function(e) {
 			//     if (e.which === 13) {
-			//         bugbook.main.addBug();
+			//         bugbook.main.submitBug();
 			//     }
 			// });
 
@@ -56,7 +64,7 @@ var bugbook = bugbook || {};
 		},
 
 		// Adds bug to DB
-		addBug: function() {
+		submitBug: function() {
 			var title = $('#js-title-input').val(),
 				link = $('#js-link-input').val(),
 				desc = $('#js-desc-input').val(),

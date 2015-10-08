@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
 
-    <title>header</title>
+    <title>search-form</title>
 
     <meta name="description" content="" />
 
@@ -44,24 +44,27 @@
         
             
 
-<header class="header clearfix" data-module="header">
+<div id="js-search-form" class="search-form active" data-module="search-form">
 
-	<h1>
-		<i class="fa fa-bug"></i>
-		<span class="title">bugbook</span>
-		<span class="tagline">Log and search commonly found bugs</span>
-	</h1>
+	<div class="row">
+		<div class="small-12">
 
-	<div class="menu clearfix" data-partial="menu">
+			<div class="input-container">
+				<input type="text" id="js-search-input" class="search-input" placeholder="Search by tags">
+			</div>
+			
+		</div>
+	</div>
 
-	<a id="js-search-toggle" href="javascript:void(0);" class="button toggle active" title="Search for Bugs">Search</a>
+	<div class="row">
+		<div class="small-12">
 
-	<a id="js-submit-toggle" href="javascript:void(0);" class="button toggle" title="Submit a Bug">Submit</a>
+			<button id="js-submit-search" class="submit-search">Search</button>
+
+		</div>
+	</div>
 
 </div>
-
-
-</header>
 
         
     </div>

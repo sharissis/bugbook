@@ -1,8 +1,13 @@
-.add-bug-form {
+.submit-bug-form {
 	// background-color: $white;
 	// border-radius: $common-border-radius;
 	// border: 1px solid $bison-hide;
 	// padding: $spacing;
+	display: none;
+
+	&.active {
+		display: block;
+	}
 
 	.input-container {
 		position: relative;

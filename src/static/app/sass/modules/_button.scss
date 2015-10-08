@@ -4,9 +4,10 @@ button, .button {
 	line-height: 1.125;
 	font-size: em-calc(16);
 	font-weight: 500;
+	font-family: $rubik;
 	text-shadow: 1px 1px 0px rgba(70, 70, 70, 0.3);
 	border-radius: $common-border-radius;
-	padding: $spacing em-calc(18);
+	padding: em-calc(12) $spacing;
 	max-width: 100%;
 	margin: 0 0 $spacing em-calc(12);
 	@include transition(all, 0.25s, ease);
@@ -16,12 +17,34 @@ button, .button {
 	}
 
 	&:hover, &:focus {
+		text-decoration: none;
 		color: $button-font-color;
 		background-color: $button-hover-background-color;
 
 		.touch & {
 			color: $button-font-color;
 			background-color: $button-background-color;
+		}
+
+	}
+
+	&.toggle {
+		border-radius: 0;
+		border-left: 1px solid $almost-white;
+		float: left;
+		margin: 0 0 $spacing;
+
+		&:first-child {
+			border-left: none;
+			border-radius: $common-border-radius 0 0 $common-border-radius;
+		}
+
+		&:last-child {
+			border-radius: 0 $common-border-radius $common-border-radius 0;
+		}
+
+		&.active {
+			background-color: $button-active-background-color;
 		}
 
 	}
