@@ -25,11 +25,11 @@ var bugbook = bugbook || {};
 			});
 
 			// Submit bug on enter
-			$(document).keypress(function(e) {
-			    if (e.which === 13) {
-			        bugbook.main.addBug();
-			    }
-			});
+			// $(document).keypress(function(e) {
+			//     if (e.which === 13) {
+			//         bugbook.main.addBug();
+			//     }
+			// });
 
 			setTimeout(function() {
 				$(emptyMessage).addClass('show');
