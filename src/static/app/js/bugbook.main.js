@@ -16,34 +16,22 @@ var bugbook = bugbook || {};
 	bugbook.main = {
 
 		init: function () {
-
-			var emptyMessage = $('#js-bugs-list-empty');
-
-			$('#js-search-toggle, #js-submit-toggle').on('click', function () {
-				
-				if (!($(this).hasClass('active'))) {
-					$('#js-search-toggle, #js-submit-toggle, #js-search-form, #js-submit-bug-form').toggleClass('active');
-				}
-
-			});
-
-			// Submit bug on button click
-			$('#js-submit-bug').on('click', function() {
-				bugbook.main.submitBug();
-			});
-
-			// Submit bug on enter
-			// $(document).keypress(function(e) {
-			//     if (e.which === 13) {
-			//         bugbook.main.submitBug();
-			//     }
-			// });
+			var emptyMessage 	= $('#js-bugs-list-empty'),
+				searchTags 		= [],
+				searchToggle 	= $('#js-search-toggle'),
+				searchForm 		= $('#js-search-form'),
+				searchButton 	= $('#js-search-button'),
+				searchInput		= $('#js-search-input'),
+				submitToggle 	= $('#js-submit-toggle'),
+				submitForm 		= $('#js-submit-bug-form'),
+				submitButton 	= $('#js-submit-button'),
+				accordionToggle = $('.js-accordion-toggle');
 
 			setTimeout(function() {
 				$(emptyMessage).addClass('show');
 			}, 500);
 			
-			// For each bug, display it
+			// For each bug in data, display it
 			bugbookRef.on('child_added', function(item) {
 				var bug = item.val();
 
@@ -55,9 +43,47 @@ var bugbook = bugbook || {};
 
 			});
 
+			//---------- EVENTS ----------//
+
+			// Toggle nav on click
+			$(searchToggle).add(submitToggle).on('click', function () {
+				if (!($(this).hasClass('active'))) {
+					$(searchToggle)
+						.add(submitToggle)
+						.add(searchForm)
+						.add(submitForm)
+						.toggleClass('active');
+				}
+			});
+
+			// Submit bug on button click
+			$(submitButton).on('click', function() {
+				bugbook.main.submitBug();
+			});
+
+			// Submit bug on enter
+			// $(document).keypress(function(e) {
+			//     if (e.which === 13) {
+			//         bugbook.main.submitBug();
+			//     }
+			// });
+			
+			// Add tag to search on enter
+			$(searchInput).keypress(function(e) {
+				var tag = $(this).val();
+			    if (e.which === 13) {
+			        bugbook.main.addTagToSearch(tag);
+			    }
+			});
+
+			// Search for bugs on click
+			$(searchButton).on('click', function() {
+				bugbook.main.searchBugs(searchTags);
+			});
+
 			// Toggle accordions when toggle is clicked
-			$('body').on('click', '.js-toggle', function() {
-				var accordion = $(this).parent();
+			$('body').on('click', accordionToggle, function(e) {
+				var accordion = $(e.target).parent();
 				$(accordion).toggleClass('open');
 			});
 
@@ -73,11 +99,6 @@ var bugbook = bugbook || {};
 				blankTitleAlert = $('#js-blank-title'),
 				invalidUrlAlert = $('#js-invalid-url'),
 				noTagsAlert = $('#js-no-tags');
-
-			console.log(title);
-			console.log(link);
-			console.log(desc);
-			console.log(tags);
 
 			// If there's no title...
 			if (!title || title.replace(/\s/g, '') === '') {
@@ -157,9 +178,9 @@ var bugbook = bugbook || {};
 			if (desc) {
 
 				if (link) {
-					$('#js-bugs-list > ul').append('<li class="js-accordion accordion clearfix"><i class="js-toggle toggle fa fa-plus-circle"></i><a class="title" href="' + link + '" title="' + title + '" target="_blank">' + title + ' <i class="fa fa-external-link-square"></i></a><div class="desc">' + desc + '</div></li>');
+					$('#js-bugs-list > ul').append('<li class="js-accordion accordion clearfix"><i class="js-accordion-toggle toggle fa fa-plus-circle"></i><a class="title" href="' + link + '" title="' + title + '" target="_blank">' + title + ' <i class="fa fa-external-link-square"></i></a><div class="desc">' + desc + '</div></li>');
 				} else {
-					$('#js-bugs-list > ul').append('<li class="js-accordion accordion clearfix"><i class="js-toggle toggle fa fa-plus-circle"></i><span class="title">' + title + '</span><div class="desc">' + desc + '</div></li>');
+					$('#js-bugs-list > ul').append('<li class="js-accordion accordion clearfix"><i class="js-accordion-toggle toggle fa fa-plus-circle"></i><span class="title">' + title + '</span><div class="desc">' + desc + '</div></li>');
 				}
 
 			} else {
@@ -197,6 +218,14 @@ var bugbook = bugbook || {};
 			$('#js-link-input').val(''); // Clear field
 			$('#js-desc-input').val(''); // Clear field
 			$('#js-tags-input').val(''); // Clear field
+		},
+
+		addTagToSearch: function (tag) {
+			console.log('addTagToSearch');
+		},
+
+		searchBugs: function(tags) {
+			console.log('searchBugs');
 		}
 
 	};
