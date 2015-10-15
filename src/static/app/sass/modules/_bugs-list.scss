@@ -91,38 +91,6 @@
 
 		}
 
-		.toggle {
-			cursor: pointer;
-			color: $bison-hide;
-			font-size: em-calc(27);
-			text-align: center;
-			line-height: em-calc(40);
-			position: absolute;
-			top: 0;
-			right: 0;
-			width: em-calc(45);
-			height: em-calc(42);
-			display: block;
-			@include transition(all, 0.25s);
-
-			&:hover {
-				color: $cape-cod;
-
-				.touch & {
-					color: $bison-hide;
-				}
-
-			}
-
-			@include bp(medium-up) {
-				font-size: em-calc(35);
-				line-height: em-calc(52);
-				width: em-calc(50);
-				height: em-calc(52);
-			}
-
-		}
-
 		a.title {
 			@include transition(color, 0.25s);
 		}

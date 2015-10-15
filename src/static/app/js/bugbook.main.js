@@ -17,15 +17,16 @@ var bugbook = bugbook || {};
 
 		init: function () {
 			var emptyMessage 	= $('#js-bugs-list-empty'),
-				searchTags 		= [],
 				searchToggle 	= $('#js-search-toggle'),
 				searchForm 		= $('#js-search-form'),
 				searchButton 	= $('#js-search-button'),
 				searchInput		= $('#js-search-input'),
+				searchAddTag	= $('#js-search-add-tag'),
+				// searchTagsList	= $('#js-search-tags-list'),
+				searchTags 		= [],
 				submitToggle 	= $('#js-submit-toggle'),
 				submitForm 		= $('#js-submit-bug-form'),
-				submitButton 	= $('#js-submit-button'),
-				accordionToggle = $('.js-accordion-toggle');
+				submitButton 	= $('#js-submit-button');
 
 			setTimeout(function() {
 				$(emptyMessage).addClass('show');
@@ -76,13 +77,19 @@ var bugbook = bugbook || {};
 			    }
 			});
 
+			// Add tag on click
+			$(searchAddTag).on('click', function() {
+				var tag = $(searchInput).val();
+				bugbook.main.addTagToSearch(tag);
+			});
+
 			// Search for bugs on click
 			$(searchButton).on('click', function() {
 				bugbook.main.searchBugs(searchTags);
 			});
 
 			// Toggle accordions when toggle is clicked
-			$('body').on('click', accordionToggle, function(e) {
+			$('body').on('click', '.js-accordion-toggle', function(e) {
 				var accordion = $(e.target).parent();
 				$(accordion).toggleClass('open');
 			});

@@ -58,6 +58,7 @@ textarea {
 	margin: 0 0 $spacing*0.75 0;
 
 	&:focus {
+		background-color: $white;
 		box-shadow: 0 0 5px $bison-hide;
 	}
 

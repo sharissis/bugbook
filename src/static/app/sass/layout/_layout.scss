@@ -62,3 +62,103 @@
 	top: em-calc(12);
 	max-width: em-calc(200);
 }
+
+.toggle, .add {
+	cursor: pointer;
+	color: $bison-hide;
+	font-size: em-calc(27);
+	text-align: center;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: em-calc(45);
+	display: block;
+	@include transition(all, 0.25s);
+
+	&:hover {
+		color: $cape-cod;
+
+		.touch & {
+			color: $bison-hide;
+		}
+
+	}
+
+	@include bp(medium-up) {
+		font-size: em-calc(35);
+		width: em-calc(50);
+	}
+
+}
+
+.toggle {
+	line-height: em-calc(42);
+	height: em-calc(42);
+
+	@include bp(medium-up) {
+		line-height: em-calc(52);
+		height: em-calc(52);
+	}
+
+}
+
+.add {
+	line-height: em-calc(45);
+	height: em-calc(45);
+}
+
+.input-container {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	max-width: 100%;
+
+	&.has-icon {
+
+		input[type="text"],
+		input[type="password"],
+		input[type="date"],
+		input[type="datetime"],
+		input[type="datetime-local"],
+		input[type="month"],
+		input[type="week"],
+		input[type="email"],
+		input[type="number"],
+		input[type="search"],
+		input[type="tel"],
+		input[type="time"],
+		input[type="url"],
+		input[type="color"],
+		textarea {
+			padding: em-calc(10) em-calc(44) em-calc(10) em-calc(10);
+
+			@include bp(medium-up) {
+				padding: em-calc(10) em-calc(49) em-calc(10) em-calc(10);
+			}
+
+		}
+		
+	}
+
+	&.half-width {
+
+		&:nth-child(even) {
+			@include bp(medium-up) {
+				margin-left: $spacing/2;
+			}
+		}
+
+		&:nth-child(odd) {
+			@include bp(medium-up) {
+				margin-right: $spacing/2;
+			}
+		}
+
+		@include bp(medium-up) {
+			float: left;
+			width: calc(50% - (#{$spacing}/2));
+		}
+
+	}
+
+}
