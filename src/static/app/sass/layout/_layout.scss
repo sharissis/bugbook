@@ -36,12 +36,12 @@
 
 	h1 {
 
-		&:hover i {
+		&:hover .fa {
 			transform: rotate(360deg);
 			color: $cascade;
 		}
 
-		i {
+		.fa {
 			@include transition(all, 0.75s);
 		}
 

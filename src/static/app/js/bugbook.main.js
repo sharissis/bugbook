@@ -57,7 +57,7 @@ var bugbook = bugbook || {};
 						.add(submitForm)
 						.toggleClass('active');
 				}
-				
+
 			});
 
 			// Submit bug on button click
@@ -108,6 +108,12 @@ var bugbook = bugbook || {};
 			$('body').on('click', '.js-accordion-toggle', function(e) {
 				var accordion = $(e.target).parent();
 				$(accordion).toggleClass('open');
+			});
+
+			// Remove tag on click
+			$('body').on('click', '.js-search-remove-tag', function () {
+				var tag = $(this).data('value');
+				bugbook.main.removeTagFromSearch(tag);
 			});
 
 		},
@@ -225,20 +231,38 @@ var bugbook = bugbook || {};
 		},
 
 		addTagToSearch: function (tag) {
-			var prevHtml = $(searchTagsList).html();
-
 			tag = tag.toLowerCase();
-			searchTags.push(tag);
 
+			var prevHtml = $(searchTagsList).html(),
+				dataValue = tag.replace(/\s/g, '-');
+
+			searchTags.push(tag);
 			$(searchTagsList).addClass('has-tags');
-			$(searchTagsList).html(prevHtml += '<span class="tag">' + tag + '</span>');
+			$(searchTagsList).html(prevHtml += '<span class="tag js-search-remove-tag" data-value="' + dataValue + '">' + tag + ' <i class="fa fa-times"></i></span>');
 			$(searchInput).val(''); // Clear field
+
+		},
+
+		removeTagFromSearch: function (tag) {
+			var removeTagIndex = searchTags.indexOf(tag);
+
+			searchTags.splice(removeTagIndex, 1);
+			$('.tag[data-value="' + tag + '"]').remove();
+
+			if (searchTags.length === 0) {
+				$(bugsList).removeClass('search-active');
+				$(emptyMessage).hide();
+				$(searchTagsList).removeClass('has-tags');
+			} else {
+				bugbook.main.searchBugs(searchTags);
+			}
 
 		},
 
 		searchBugs: function(tags) {
 			
 			$(bugsList).addClass('search-active');
+			$(bugsList).find('li').removeClass('show'); // Reset results to be hidden
 
 			$(searchTags).each(function (i) {
 				var tag = searchTags[i].replace(/\s/g, '-');
@@ -248,7 +272,6 @@ var bugbook = bugbook || {};
 			var results = $(bugsList).find('li.show');
 
 			if (results.length === 0) { // If no results
-				console.log('hi');
 				$(emptyMessage).show(); // Show no results message
 			}
 

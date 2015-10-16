@@ -36,11 +36,11 @@
 		border-radius: $common-border-radius;
 		border: $common-border;
 		font-size: em-calc(14);
-		margin: $spacing*0.5 0 0;
+		margin: 0 0 $spacing*0.5;
 		position: relative;
 		@include transition(background-color, 0.25s);
 
-		&:first-child {
+		&:last-child {
 			margin: 0;
 		}
 
