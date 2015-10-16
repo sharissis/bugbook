@@ -11,19 +11,20 @@ var bugbook = bugbook || {};
 
 	'use strict';
 
-	var bugbookRef = new Firebase('https://torrid-heat-7306.firebaseio.com/');
+	var bugbookRef 		= new Firebase('https://torrid-heat-7306.firebaseio.com/'),
+		bugsList 		= $('#js-bugs-list'),
+		searchTagsList	= $('#js-search-tags-list'),
+		searchInput		= $('#js-search-input'),
+		searchTags 		= [],
+		emptyMessage 	= $('#js-bugs-list-empty');
 
 	bugbook.main = {
 
 		init: function () {
-			var emptyMessage 	= $('#js-bugs-list-empty'),
-				searchToggle 	= $('#js-search-toggle'),
+			var searchToggle 	= $('#js-search-toggle'),
 				searchForm 		= $('#js-search-form'),
 				searchButton 	= $('#js-search-button'),
-				searchInput		= $('#js-search-input'),
 				searchAddTag	= $('#js-search-add-tag'),
-				// searchTagsList	= $('#js-search-tags-list'),
-				searchTags 		= [],
 				submitToggle 	= $('#js-submit-toggle'),
 				submitForm 		= $('#js-submit-bug-form'),
 				submitButton 	= $('#js-submit-button');
@@ -37,7 +38,7 @@ var bugbook = bugbook || {};
 				var bug = item.val();
 
 				if (emptyMessage.length > 0) {
-					$(emptyMessage).remove();
+					$(emptyMessage).hide();
 				}
 
 				bugbook.main.displayBug(bug.title, bug.link, bug.desc, bug.tags);
@@ -48,6 +49,7 @@ var bugbook = bugbook || {};
 
 			// Toggle nav on click
 			$(searchToggle).add(submitToggle).on('click', function () {
+
 				if (!($(this).hasClass('active'))) {
 					$(searchToggle)
 						.add(submitToggle)
@@ -55,6 +57,7 @@ var bugbook = bugbook || {};
 						.add(submitForm)
 						.toggleClass('active');
 				}
+				
 			});
 
 			// Submit bug on button click
@@ -64,17 +67,21 @@ var bugbook = bugbook || {};
 
 			// Submit bug on enter
 			// $(document).keypress(function(e) {
+
 			//     if (e.which === 13) {
 			//         bugbook.main.submitBug();
 			//     }
+
 			// });
 			
 			// Add tag to search on enter
 			$(searchInput).keypress(function(e) {
 				var tag = $(this).val();
+
 			    if (e.which === 13) {
 			        bugbook.main.addTagToSearch(tag);
 			    }
+
 			});
 
 			// Add tag on click
@@ -85,7 +92,16 @@ var bugbook = bugbook || {};
 
 			// Search for bugs on click
 			$(searchButton).on('click', function() {
-				bugbook.main.searchBugs(searchTags);
+
+				if ($(searchInput).val().length > 0) {
+					var tag = $(searchInput).val();
+					bugbook.main.addTagToSearch(tag);
+				}
+
+				if (searchTags.length > 0) {
+					bugbook.main.searchBugs(searchTags);
+				}
+
 			});
 
 			// Toggle accordions when toggle is clicked
@@ -151,7 +167,7 @@ var bugbook = bugbook || {};
 							tags: tags
 						});
 
-						bugbook.main.clearFields();
+						bugbook.main.clearSubmitFields();
 
 					} else {
 						// Show validation alert
@@ -167,7 +183,7 @@ var bugbook = bugbook || {};
 						tags: tags
 					});
 
-					bugbook.main.clearFields();
+					bugbook.main.clearSubmitFields();
 
 				}
 
@@ -181,17 +197,59 @@ var bugbook = bugbook || {};
 
 		// Appends bug entry to a list of bugs
 		displayBug: function(title, link, desc, tags) {
+			var dataTags = '';
+
+			$(tags).each(function (i) {
+				var dataTag = tags[i].replace(/\s/g, '-');
+				
+				if (i === 0) {
+					dataTags += dataTag;
+				} else {
+					dataTags += (' ' + dataTag);
+				}
+
+			});
 
 			if (desc) {
 
 				if (link) {
-					$('#js-bugs-list > ul').append('<li class="js-accordion accordion clearfix"><i class="js-accordion-toggle toggle fa fa-plus-circle"></i><a class="title" href="' + link + '" title="' + title + '" target="_blank">' + title + ' <i class="fa fa-external-link-square"></i></a><div class="desc">' + desc + '</div></li>');
+					$('#js-bugs-list > ul').append('<li class="js-accordion accordion clearfix" data-tags="' + dataTags + '"><i class="js-accordion-toggle toggle fa fa-plus-circle"></i><a class="title" href="' + link + '" title="' + title + '" target="_blank">' + title + ' <i class="fa fa-external-link-square"></i></a><div class="desc">' + desc + '</div></li>');
 				} else {
-					$('#js-bugs-list > ul').append('<li class="js-accordion accordion clearfix"><i class="js-accordion-toggle toggle fa fa-plus-circle"></i><span class="title">' + title + '</span><div class="desc">' + desc + '</div></li>');
+					$('#js-bugs-list > ul').append('<li class="js-accordion accordion clearfix" data-tags="' + dataTags + '"><i class="js-accordion-toggle toggle fa fa-plus-circle"></i><span class="title">' + title + '</span><div class="desc">' + desc + '</div></li>');
 				}
 
 			} else {
-				$('#js-bugs-list > ul').append('<li><a class="title" href="' + link + '" title="' + title + '" target="_blank">' + title + ' <i class="fa fa-external-link-square"></a></li>');
+				$('#js-bugs-list > ul').append('<li data-tags="' + dataTags + '"><a class="title" href="' + link + '" title="' + title + '" target="_blank">' + title + ' <i class="fa fa-external-link-square"></a></li>');
+			}
+
+		},
+
+		addTagToSearch: function (tag) {
+			var prevHtml = $(searchTagsList).html();
+
+			tag = tag.toLowerCase();
+			searchTags.push(tag);
+
+			$(searchTagsList).addClass('has-tags');
+			$(searchTagsList).html(prevHtml += '<span class="tag">' + tag + '</span>');
+			$(searchInput).val(''); // Clear field
+
+		},
+
+		searchBugs: function(tags) {
+			
+			$(bugsList).addClass('search-active');
+
+			$(searchTags).each(function (i) {
+				var tag = searchTags[i].replace(/\s/g, '-');
+				$('[data-tags~="' + tag + '"').addClass('show'); // Show results with the tag in data-tags
+			});
+
+			var results = $(bugsList).find('li.show');
+
+			if (results.length === 0) { // If no results
+				console.log('hi');
+				$(emptyMessage).show(); // Show no results message
 			}
 
 		},
@@ -216,23 +274,19 @@ var bugbook = bugbook || {};
 		},
 
 		validateUrl: function(url) {
+
 			var urlRegex = new RegExp('^(http:\/\/www.|https:\/\/www.|ftp:\/\/www.|www.){1}([0-9A-Za-z]+\.)');
   			return urlRegex.test(url);
+  			
 		},
 
-		clearFields: function() {
+		clearSubmitFields: function() {
+
 			$('#js-title-input').val(''); // Clear field
 			$('#js-link-input').val(''); // Clear field
 			$('#js-desc-input').val(''); // Clear field
 			$('#js-tags-input').val(''); // Clear field
-		},
 
-		addTagToSearch: function (tag) {
-			console.log('addTagToSearch');
-		},
-
-		searchBugs: function(tags) {
-			console.log('searchBugs');
 		}
 
 	};

@@ -55,7 +55,7 @@ textarea {
 	border-radius: $common-border-radius;
 	border-color: $border-color;
 	padding: em-calc(10);
-	margin: 0 0 $spacing*0.75 0;
+	margin: 0 0 $spacing*0.75;
 
 	&:focus {
 		background-color: $white;
@@ -63,15 +63,16 @@ textarea {
 	}
 
 	&.has-tooltip {
-		padding: em-calc(10) em-calc(45) em-calc(10) em-calc(10);
+		padding: em-calc(10);
+		// padding: em-calc(10) em-calc(45) em-calc(10) em-calc(10); // Uncomment when tooltips enabled
 
 		+ .fa {
-			display: none; // Remove when tooltips added
 			cursor: pointer;
 			color: $bison-hide;
 			font-size: em-calc(20);
 			text-align: center;
 			line-height: em-calc(45);
+			display: none; // Remove when tooltips enabled
 			position: absolute;
 			right: 0;
 			top: 0;
@@ -88,17 +89,21 @@ textarea {
 
 			}
 
-			> span {
-				display: none;
-			}
+		}
 
+	}
+
+	+ .fa {
+
+		> span {
+			display: none;
 		}
 
 	}
 
 	@include bp(medium-up) {
 		font-size: em-calc(16);
-		margin: 0 0 $spacing 0;
+		margin: 0 0 $spacing;
 	}
 
 }

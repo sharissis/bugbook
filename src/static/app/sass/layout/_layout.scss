@@ -162,3 +162,14 @@
 	}
 
 }
+
+.tag {
+	cursor: pointer;
+	border-radius: $common-border-radius;
+	border: 1px solid $cascade;
+	background-color: $alert-background-color;
+	font-size: em-calc(14);
+	display: inline-block;
+	padding: em-calc(5);
+	margin: 0 em-calc(5) em-calc(5) 0;
+}

@@ -1,4 +1,17 @@
 .bugs-list {
+
+	&.search-active {
+
+		li {
+			display: none;
+
+			&.show {
+				display: block;
+			}
+
+		}
+
+	}
 	
 	.bugs-list-empty, ul {
 		margin: 0;
