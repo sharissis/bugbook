@@ -3,87 +3,38 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-		<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<head>
+
+    <title>submit-bug-form</title>
+
+    <meta name="description" content="" />
 
 
-		<title>Home Page</title>
-
-		<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,400italic,500italic" rel="stylesheet" type="text/css">
-
-		<link rel="stylesheet" href="css/main.css">
-
-		<script src="js/plugins/modernizr.js"></script>
-
-		<script src="js/plugins/firebase.js"></script>
-
-		<script src="js/jquery.js"></script>
-
-	</head>
-
-	<body class="home">
-			
-		
-
-<div class="container">
-	
-	
-
-<header class="header clearfix" data-module="header">
-
-	<h1>
-		<i class="fa fa-bug"></i>
-		<span class="title">bugbook</span>
-		<span class="tagline">Log and search commonly found bugs</span>
-	</h1>
-
-	<div class="menu clearfix" data-partial="menu">
-
-	<a id="js-search-toggle" href="javascript:;" class="button button-toggle active" title="Search for Bugs">Search</a>
-
-	<a id="js-submit-toggle" href="javascript:;" class="button button-toggle" title="Submit a Bug">Submit</a>
-
-</div>
+    <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
-</header>
+    <base href="../" />
 
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-	
+    <link href='https://fonts.googleapis.com/css?family=Rubik:300,400,500,400italic,500italic' rel='stylesheet' type='text/css'>
 
-<div id="js-search-form" class="search-form active" data-module="search-form">
+    <link rel="stylesheet" href="css/main.css" />
 
-	<div class="row">
-		<div class="small-12">
+    <script src="js/plugins/modernizr.js"></script>
 
-			<div class="input-container has-icon">
-				<input type="text" id="js-search-input" class="search-input" placeholder="Search by tags">
-				<i id="js-search-add-tag" class="search-add-tag add fa fa-plus-circle"></i>
-			</div>
-			
-		</div>
-	</div>
+    <script src="js/plugins/firebase.js"></script>
 
-	<div class="row">
-		<div class="small-12">
-			<div id="js-search-tags-list" class="search-tags-list"></div>
-		</div>
-	</div>
+    <script src="js/jquery.js"></script>
 
-	<div class="row">
-		<div class="small-12">
+</head>
+<body>
 
-			<button id="js-search-button" class="search-button">Search</button>
-
-		</div>
-	</div>
-
-</div>
-
-
-	
+    <div class="container">
+        
+            
 
 <div id="js-submit-bug-form" class="submit-bug-form" data-module="submit-bug-form">
 	
@@ -149,23 +100,10 @@
 
 </div>
 
+        
+    </div>
 
-</div>
+    <script src="js/main.js"></script>
 
-<div class="container">
-	
-	
-
-<div id="js-bugs-list" class="bugs-list" data-module="bugs-list">
-	<p id="js-bugs-list-empty" class="bugs-list-empty">No results to display.</p>
-	<ul></ul>
-</div>
-
-
-</div>
-
-		<script src="js/main.js"></script>
-
-	</body>
-
+</body>
 </html>

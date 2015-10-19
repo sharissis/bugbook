@@ -231,14 +231,21 @@ var bugbook = bugbook || {};
 		},
 
 		addTagToSearch: function (tag) {
-			tag = tag.toLowerCase();
+			var tagEntered = searchTags.indexOf(tag) > -1;
 
-			var prevHtml = $(searchTagsList).html(),
-				dataValue = tag.replace(/\s/g, '-');
+			if (!tagEntered && tag !== '') {
 
-			searchTags.push(tag);
-			$(searchTagsList).addClass('has-tags');
-			$(searchTagsList).html(prevHtml += '<span class="tag js-search-remove-tag" data-value="' + dataValue + '">' + tag + ' <i class="fa fa-times"></i></span>');
+				tag = tag.toLowerCase();
+
+				var prevHtml = $(searchTagsList).html(),
+					dataValue = tag.replace(/\s/g, '-');
+
+				searchTags.push(tag);
+				$(searchTagsList).addClass('has-tags');
+				$(searchTagsList).html(prevHtml += '<span class="tag js-search-remove-tag" data-value="' + dataValue + '">' + tag + ' <i class="fa fa-times"></i></span>');
+
+			}
+
 			$(searchInput).val(''); // Clear field
 
 		},

@@ -1,0 +1,171 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+		<title>Bugbook</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,400italic,500italic" rel="stylesheet" type="text/css">
+
+		<link rel="stylesheet" href="css/main.css">
+
+		<script src="js/plugins/modernizr.js"></script>
+
+		<script src="js/plugins/firebase.js"></script>
+
+		<script src="js/jquery.js"></script>
+
+	</head>
+
+	<body class="home">
+			
+		
+
+<div class="container">
+	
+	
+
+<header class="header clearfix" data-module="header">
+
+	<h1>
+		<i class="fa fa-bug"></i>
+		<span class="title">bugbook</span>
+		<span class="tagline">Log and search commonly found bugs</span>
+	</h1>
+
+	<div class="menu clearfix" data-partial="menu">
+
+	<a id="js-search-toggle" href="javascript:;" class="button button-toggle active" title="Search for Bugs">Search</a>
+
+	<a id="js-submit-toggle" href="javascript:;" class="button button-toggle" title="Submit a Bug">Submit</a>
+
+</div>
+
+
+</header>
+
+
+	
+
+<div id="js-search-form" class="search-form active" data-module="search-form">
+
+	<div class="row">
+		<div class="small-12">
+
+			<div class="input-container has-icon">
+				<input type="text" id="js-search-input" class="search-input" placeholder="Search by tags">
+				<i id="js-search-add-tag" class="search-add-tag add fa fa-plus-circle"></i>
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-12">
+			<div id="js-search-tags-list" class="search-tags-list"></div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-12">
+
+			<button id="js-search-button" class="search-button">Search</button>
+
+		</div>
+	</div>
+
+</div>
+
+
+	
+
+<div id="js-submit-bug-form" class="submit-bug-form" data-module="submit-bug-form">
+	
+	<div class="row">
+		<div class="small-12 clearfix">
+			
+			<div class="input-container half-width">
+				<input type="text" id="js-title-input" class="title-input has-tooltip" placeholder="Title*">
+				<i class="fa fa-question-circle">
+					<span>Information on how to fill in this field</span>
+				</i>
+				<div class="tooltip">This is the tooltip for the field. Lorem ipsum dolor sit amet.</div>
+			</div>
+
+			<div class="input-container half-width">
+				<input type="text" id="js-link-input" class="link-input has-tooltip" placeholder="Link">
+				<i class="fa fa-question-circle">
+					<span>Information on how to fill in this field</span>
+				</i>
+				<div class="tooltip">This is the tooltip for the field. Lorem ipsum dolor sit amet.</div>
+			</div>
+
+			<div class="input-container">
+				<textarea id="js-desc-input" class="desc-input has-tooltip" placeholder="Description/Explanation"></textarea>
+				<i class="fa fa-question-circle">
+					<span>Information on how to fill in this field</span>
+				</i>
+				<div class="tooltip">This is the tooltip for the field. Lorem ipsum dolor sit amet.</div>
+			</div>
+
+			<div class="input-container">
+				<input type="text" id="js-tags-input" class="tags-input has-tooltip" placeholder="Tags (separated by commas)*">
+				<i class="fa fa-question-circle">
+					<span>Information on how to fill in this field</span>
+				</i>
+				<div class="tooltip">This is the tooltip for the field. Lorem ipsum dolor sit amet.</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="small-12">
+
+			<button id="js-submit-button" class="submit-button">Submit Bug</button>
+
+		</div>
+	</div>
+
+	<div class="row">
+	<div class="small-12">
+		<div class="validation-alerts" data-partial="validation-alerts">
+	
+			<p id="js-missing-field" class="missing-field">You must enter either a link, a description/explanation, or both.</p>
+			<p id="js-blank-title" class="blank-title">Please enter a title.</p>
+			<p id="js-invalid-url" class="invalid-url">Please enter a valid URL. Make sure 'www' is included in the URL if applicable.</p>
+			<p id="js-no-tags" class="no-tags">Please enter at least one tag.</p>
+				
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+</div>
+
+<div class="container">
+	
+	
+
+<div id="js-bugs-list" class="bugs-list" data-module="bugs-list">
+	<p id="js-bugs-list-empty" class="bugs-list-empty">No results to display.</p>
+	<ul></ul>
+</div>
+
+
+</div>
+
+		<script src="js/main.js"></script>
+
+	</body>
+
+</html>
