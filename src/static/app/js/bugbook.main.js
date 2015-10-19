@@ -1,7 +1,8 @@
-/*global window:false */
-/*global $:false */
+/*global window: false */
+/*global $: false */
 /*jslint plusplus: true */
-/*global Firebase:false */
+/*jslint global: false */
+/*global Firebase: false */
 
 // Firebase Data: https://pvzp1paydyr.firebaseio-demo.com
 
@@ -323,7 +324,7 @@ var bugbook = bugbook || {};
 
 })(window.jQuery, window.Modernizr, window, window.document);
 
-$(function () {
+$(window).load(function () {
 
 	'use strict';
 
