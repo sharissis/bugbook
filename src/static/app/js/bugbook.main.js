@@ -28,7 +28,8 @@ var bugbook = bugbook || {};
 				searchAddTag	= $('#js-search-add-tag'),
 				submitToggle 	= $('#js-submit-toggle'),
 				submitForm 		= $('#js-submit-bug-form'),
-				submitButton 	= $('#js-submit-button');
+				submitButton 	= $('#js-submit-button'),
+				backToTop		= $('#js-back-to-top');
 
 			setTimeout(function() {
 				$(emptyMessage).addClass('show');
@@ -115,6 +116,24 @@ var bugbook = bugbook || {};
 			$('body').on('click', '.js-search-remove-tag', function () {
 				var tag = $(this).data('value');
 				bugbook.main.removeTagFromSearch(tag);
+			});
+
+			// Show back to top button if scrolled down the page
+			$(window).on('scroll', function () {
+				var scrollPosition = $('body').scrollTop(),
+					threshold = $('.container:nth-of-type(2)').offset().top;
+
+				if (scrollPosition > threshold) {
+					backToTop.addClass('show');
+				} else {
+					backToTop.removeClass('show');
+				}
+
+			});
+
+			// Back to top on click
+			$(backToTop).on('click', function () {
+				$('html, body').animate({ scrollTop: 0 }, 500);
 			});
 
 		},
