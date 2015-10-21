@@ -218,8 +218,12 @@ var bugbook = bugbook || {};
 		displayBug: function(title, link, desc, tags) {
 			var dataTags = '';
 
+			title = bugbook.main.removeHtml(title);
+			link = bugbook.main.removeHtml(link);
+			desc = bugbook.main.removeHtml(desc);
+
 			$(tags).each(function (i) {
-				var dataTag = tags[i].replace(/\s/g, '-');
+				var dataTag = bugbook.main.removeHtml(tags[i].replace(/\s/g, '-'));
 				
 				if (i === 0) {
 					dataTags += dataTag;
@@ -321,6 +325,14 @@ var bugbook = bugbook || {};
 			var urlRegex = new RegExp('^(http:\/\/|https:\/\/|ftp:\/\/){1}([0-9A-Za-z]+\.)');
   			return urlRegex.test(url);
   			
+		},
+
+		// Destroys HTML tags and turns them into strings
+		removeHtml: function(string) {
+
+			string = string.replace('<', '&lt;').replace('>', '&gt;');
+			return string;
+
 		},
 
 		clearSubmitFields: function() {
