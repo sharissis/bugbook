@@ -293,7 +293,7 @@ var bugbook = bugbook || {};
 
 			$(searchTags).each(function (i) {
 				var tag = searchTags[i].replace(/\s/g, '-');
-				$('[data-tags~="' + tag + '"').addClass('show'); // Show results with the tag in data-tags
+				$('[data-tags~="' + tag + '"]').addClass('show'); // Show results with the tag in data-tags
 			});
 
 			var results = $(bugsList).find('li.show');
