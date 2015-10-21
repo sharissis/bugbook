@@ -179,13 +179,6 @@ var bugbook = bugbook || {};
 
 					if (valid) {
 
-						var httpRegex = new RegExp('^(http|https)://.*$'),
-							hasHttp = httpRegex.test(link);
-
-						if (!hasHttp) {
-							link = 'http://' + link;
-						}
-
 						bugbookRef.push({
 							title: title,
 							link: link,
@@ -325,7 +318,7 @@ var bugbook = bugbook || {};
 
 		validateUrl: function(url) {
 
-			var urlRegex = new RegExp('^(http:\/\/www.|https:\/\/www.|ftp:\/\/www.|www.){1}([0-9A-Za-z]+\.)');
+			var urlRegex = new RegExp('^(http:\/\/|https:\/\/|ftp:\/\/){1}([0-9A-Za-z]+\.)');
   			return urlRegex.test(url);
   			
 		},
