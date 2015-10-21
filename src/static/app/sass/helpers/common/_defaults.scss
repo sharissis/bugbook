@@ -29,9 +29,11 @@ textarea {
 
 a {
 	color: $link-color;
+	outline: 0;
 	@include transition(color, 0.25s);
 
 	&:hover, &:focus, &:active, &:visited {
+		outline: 0;
 		text-decoration: none;
 	}
 
