@@ -10,6 +10,7 @@ body {
 	background-image: url(i/tiny-grid.png);
 	color: $default-font-color;
 	position: relative;
+	padding-bottom: $spacing;
 
 	* {
 		// Better defaults for `background` so we can just do background: url(image) and not have to set anything else.
