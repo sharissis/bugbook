@@ -330,7 +330,7 @@ var bugbook = bugbook || {};
 		// Destroys HTML tags and turns them into strings
 		removeHtml: function(string) {
 
-			string = string.replace('<', '&lt;').replace('>', '&gt;');
+			string = string.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 			return string;
 
 		},
