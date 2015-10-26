@@ -80,9 +80,8 @@
 			&.open {
 				
 				.desc {
-					overflow: scroll;
 					opacity: 1;
-					max-height: em-calc(300);
+					max-height: em-calc(1000);
 					padding: 0 $spacing*0.75 $spacing*0.75 $spacing*0.75;
 
 					@include bp(medium-up) {
@@ -138,7 +137,8 @@
 		}
 
 		.desc {
-			overflow: hidden;
+			overflow-x: hidden;
+			overflow-y: scroll;
 			opacity: 0;
 			font-weight: 300;
 			max-height: 0;

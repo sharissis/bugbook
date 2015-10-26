@@ -109,6 +109,7 @@ var bugbook = bugbook || {};
 			// Toggle accordions when toggle is clicked
 			$('body').on('click', '.js-accordion-toggle', function(e) {
 				var accordion = $(e.target).parent();
+				$(this).toggleClass('fa-plus-circle').toggleClass('fa-minus-circle');
 				$(accordion).toggleClass('open');
 			});
 
